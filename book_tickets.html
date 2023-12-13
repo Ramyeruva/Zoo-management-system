@@ -1,0 +1,100 @@
+{% include "customer_head.html"%}
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+            <script>
+            $(document).ready(function(){
+              $("#children_count").on("keyup",function(){
+                let children_count = $("#children_count").val();
+                let persons_html = '<div class="row">';
+                for(let i=1;i<=children_count;i++){
+                    persons_html= persons_html +
+                   `<div class="col-md-4" >
+                   <div class="m-1 p-2" style="border:1px solid #ccc">
+                   <div>Person ${i}</div>
+                    <div class="mt-1">
+                        <label> Name</label>
+                        <input type="text"  name="name${i}" placeholder="Name" class="form-control" required>
+                    </div>
+                    <div class="mt-1">
+                        <label>Age</label>
+                        <input type="text" name="age${i}" placeholder="Age" class="form-control" required>
+                    </div>
+                    </div>
+                    </div>
+                    `
+                }
+                persons_html = persons_html + '</div>'
+                console.log(persons_html)
+                $("#persons").html(persons_html);
+              });
+            });
+            </script>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+            <script>
+            $(document).ready(function(){
+              $("#adult_count").on("keyup",function(){
+                let adult_count = $("#adult_count").val();
+                let adults_html = '<div class="row">';
+                for(let i=1;i<=adult_count;i++){
+                    adults_html= adults_html +
+                   `<div class="col-md-4" >
+                   <div class="m-1 p-2" style="border:1px solid #ccc">
+                   <div>Person ${i}</div>
+                    <div class="mt-1">
+                        <label> Name</label>
+                        <input type="text"  name="name${i}" placeholder="Name" class="form-control" required>
+                    </div>
+                    <div class="mt-1">
+                        <label>Age</label>
+                        <input type="text" name="age${i}" placeholder="Age" class="form-control" required>
+                    </div>
+                    </div>
+                    </div>
+                    `
+                }
+                adults_html = adults_html + '</div>'
+                console.log(adults_html)
+                $("#adults").html(adults_html);
+              });
+            });
+            </script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="card mt-5 p-3" style="border-radius: 50px 50px;">
+                <form action="book_tickets1" method="post">
+                    <div class="text-center h4">Book Ticket</div>
+                    <input type="hidden" name="ticket_id" value="{{ticket_id}}">
+                         <div class="mt-1">
+                              <label for="no_of_bookings" class="form-label">Number Of Bookings</label>
+                              <input type="number" min="1" name="no_of_bookings" id="no_of_bookings" placeholder="Enter Number" required class="form-control">
+                         </div>
+                        <div class="mt-1">
+                              <label for="children_count" class="form-label">Children Count</label>
+                              <input type="number" min="1" name="children_count" id="children_count" placeholder="Enter For Children"  required class="form-control">
+                        </div>
+                         <div class="">
+                            <div class="card2 p-3 mt-2">
+                                <div id="persons"></div>
+                            </div>
+                        </div>
+                        <div class="mt-1">
+                              <label for="adult_count" class="form-label">Adult Count</label>
+                              <input type="number" min="1" name="adult_count" id="adult_count" placeholder="Enter For Adult"  required class="form-control">
+                        </div>
+                         <div class="">
+                            <div class="card2 p-3 mt-2">
+                                <div id="adults"></div>
+                            </div>
+                        </div>
+                       <div class="mt-2">
+                            <input type="submit" value="Book Ticket" class="btn btn-primary w-100"  style="border-radius:50px;">
+                        </div>
+                 </form>
+            </div>
+        </div>
+    </div>
+</div>

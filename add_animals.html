@@ -1,0 +1,48 @@
+{% include "guardian_head.html"%}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="card mt-5 p-3" style="border-radius: 50px 50px;">
+                <form action="add_animal1" method="post" enctype="multipart/form-data">
+                    <div class="text-center h4">Add Animal</div>
+                    <div class="row">
+                         <div class="col-md-6 mt-1">
+                              <label for="animal_name" class="form-label">Animal Name</label>
+                              <input type="text" name="animal_name" id="animal_name" placeholder="Enter Name" required class="form-control">
+                         </div>
+                        <div class="col-md-6 mt-1">
+                              <label for="animal_type" class="form-label">Animal Type</label>
+                              <input type="text" name="animal_type" id="animal_type" placeholder="Enter Type" required class="form-control">
+                        </div>
+                        <div class="col-md-6 mt-1">
+                              <label for="weight" class="form-label">Weight</label>
+                              <input type="number" min="1" name="weight" id="weight" placeholder="Enter Weight" required class="form-control">
+                        </div>
+                         <div class="col-md-6 mt-1">
+                              <label for="picture" class="form-label">Picture</label>
+                              <input type="file" name="picture" id="picture"  required class="form-control">
+                        </div>
+                         <div class="col-md-6 mt-1">
+                              <label for="age" class="form-label">Age</label>
+                              <input type="number" min="1" name="age" id="age" placeholder="Enter Age" required class="form-control">
+                        </div>
+                         <div class="col-md-6 mt-1">
+                              <label for="about" class="form-label">About</label>
+                             <textarea name="about" id="about" placeholder="Enter About" required class="form-control"></textarea>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Gender</label>
+                            <input type="radio" name="gender" id="male" required value="male"><label for="male">Male</label>
+                            <input type="radio" name="gender" id="female" required value="female"><label for="female">Female</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="submit" value="ADD Animal" class="btn btn-primary w-100"  style="border-radius:50px;">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

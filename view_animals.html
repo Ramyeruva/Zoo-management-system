@@ -1,0 +1,60 @@
+{% if session["role"] == 'Admin':%}
+    {% include 'admin_head.html' %}
+{% elif session["role"] == 'Guardian':%}
+    {% include 'guardian_head.html' %}
+{% elif session["role"] == 'Doctor':%}
+    {% include 'doctor_head.html' %}
+{% elif session["role"] == 'Customer':%}
+    {% include 'customer_head.html' %}
+{% else:%}
+    {% include 'head.html' %}
+{% endif %}
+
+<div class="container">
+        <div class="row">
+            {% for animal in animals:%}
+            <div class="col-md-3">
+                <div class="card mt-5 p-3" style="border-radius: 50px 50px;">
+                     <div class="text-center card-image">
+                            <img src="/static/pictures/{{animal['picture']}}" style="max-width:100%;height:100px;">
+                       </div>
+                     <div class="mt-1">
+                          <div class="text-muted">Animal Name : <b>{{animal['animal_name']}}</b></div>
+                     </div>
+                     <div class="mt-1">
+                          <div class="text-muted">Animal Type : <b>{{animal['animal_type']}}</b></div>
+                     </div>
+                     <div class="mt-1">
+                          <div class="text-muted">Weight : <b>{{animal['weight']}}</b></div>
+                     </div>
+                     <div class="mt-1">
+                          <div class="text-muted">Age : <b>{{animal['age']}} Years</b></div>
+                     </div>
+                    <div class="mt-1">
+                          <div class="text-muted">Gender : <b>{{animal['gender']}}</b></div>
+                     </div>
+                    <div class="row">
+                        {% if session["role"] == 'Guardian':%}
+                        <div class="col-md-6 mt-3">
+                            <a href="add_food?animal_id={{animal['_id']}}" class="btn btn-success w-100" style="border-radius:50px;">Add Food</a>
+                        </div>
+                        {% endif %}
+                        <div class="col-md-6 mt-3">
+                            <a href="view_food?animal_id={{animal['_id']}}" class="btn btn-primary w-100" style="border-radius:50px;">View Food</a>
+                        </div>
+                         {% if session["role"] == 'Guardian':%}
+                        <div class="col-md-6 mt-3">
+                            <a href="send_doctor_request?animal_id={{animal['_id']}}" class="btn btn-primary w-100" style="border-radius:50px;font-size:13px">Doctor Request</a>
+                        </div>
+                        {% endif%}
+                        {% if session["role"] != 'Customer':%}
+                        <div class="col-md-6 mt-3">
+                            <a href="view_doctor_requests?animal_id={{animal['_id']}}" class="btn btn-success w-100" style="border-radius:50px;font-size:13px">View Requests</a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>

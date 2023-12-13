@@ -1,0 +1,26 @@
+{% include "guardian_head.html"%}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="card mt-5 p-3" style="border-radius: 50px 50px;">
+                <form action="add_food1" method="post">
+                    <div class="text-center h4">Add Food</div>
+                    <input type="hidden" name="animal_id" value="{{animal_id}}">
+                         <div class="mt-1">
+                              <label for="food_name" class="form-label">Food Name</label>
+                              <input type="text" name="food_name" id="food_name" placeholder="Enter Name" required class="form-control">
+                         </div>
+                        <div class="mt-1">
+                              <label for="food_time" class="form-label">Food Time</label>
+                              <input type="time" name="food_time" id="food_time"  required class="form-control">
+                        </div>
+                       <div class="mt-2">
+                            <input type="submit" value="ADD Food" class="btn btn-primary w-100"  style="border-radius:50px;">
+                        </div>
+                 </form>
+            </div>
+        </div>
+    </div>
+</div>

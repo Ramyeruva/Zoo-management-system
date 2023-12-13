@@ -1,0 +1,33 @@
+{% include "admin_head.html"%}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="card mt-5 p-3" style="border-radius: 50px 50px;">
+                <form action="add_ticket1" method="post">
+                    <div class="text-center h4">Add Ticket</div>
+                         <div class="mt-1">
+                              <label for="ticket_title" class="form-label">Ticket Title</label>
+                              <input type="text" name="ticket_title" id="ticket_title" placeholder="Enter Title" required class="form-control">
+                         </div>
+                        <div class="mt-1">
+                              <label for="available_tickets" class="form-label">Available Tickets</label>
+                              <input type="number" min="1" name="available_tickets" id="available_tickets" placeholder="Enter Number"  required class="form-control">
+                        </div>
+                        <div class="mt-1">
+                              <label for="price_per_children" class="form-label">Price Per Children</label>
+                              <input type="number" min="1" name="price_per_children" id="price_per_children" placeholder="Enter For Children"  required class="form-control">
+                        </div>
+                     <div class="mt-1">
+                              <label for="price_per_adult" class="form-label">Price Per Adult</label>
+                              <input type="number" min="1" name="price_per_adult" id="price_per_adult" placeholder="Enter For Adult"  required class="form-control">
+                        </div>
+                       <div class="mt-2">
+                            <input type="submit" value="ADD Ticket" class="btn btn-primary w-100"  style="border-radius:50px;">
+                        </div>
+                 </form>
+            </div>
+        </div>
+    </div>
+</div>

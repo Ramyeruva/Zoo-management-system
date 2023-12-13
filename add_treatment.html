@@ -1,0 +1,23 @@
+{% include "doctor_head.html"%}
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+         <div class="card mt-5 p-3" style="border-radius: 50px 50px;">
+                <form action="add_treatment1" method="post">
+                     <input type="hidden" name="animal_id" value="{{animal_id}}">
+                     <input type="hidden" name="doctor_request_id" value="{{doctor_request_id}}">
+                    <div class="text-center h4">Treatment</div>
+                    <div class="mt-1">
+                          <label for="treatment" class="form-label">Treatment</label>
+                        <textarea name="treatment" id="treatment" placeholder="Enter Treatment" required class="form-control"></textarea>
+                     </div>
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4 mt-4">
+                            <input type="submit" value="Send" class="btn btn-primary w-100"  style="border-radius:50px;">
+                        </div>
+                    </div>
+                </form>
+         </div>
+    </div>
+</div>

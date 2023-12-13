@@ -1,0 +1,64 @@
+{% include 'customer_head.html' %}
+
+<script>
+function validate(){
+        var regex_care_name = /^[a-zA-Z ]*$/;
+        let holder_name = document.getElementById("holder_name").value
+        if(!regex_care_name.test(holder_name)){
+            alert("Invalid Name on Card")
+            return false
+        }
+
+        let card_number = document.getElementById("card_number").value
+        if(card_number.length!=16){
+            alert("Card Number Should be 16")
+            return false
+        }
+
+        let expiry_date = document.getElementById("expiry_date").value
+        if(expiry_date.length!=5){
+            alert("Invalid Expire Date")
+            return false
+        }
+
+        let cvv = document.getElementById("cvv").value
+        if(cvv.length!=3){
+            alert("Invalid CVV")
+            return false
+        }
+
+        return true
+    }
+</script>
+
+ <div class="container">
+     <div class="row">
+         <div class="col-md-4"></div>
+         <div class="col-md-4">
+             <div class="card mt-5 p-3" style="border-radius: 50px 50px;">
+                  <div class="text-center h4" >Pay Amount</div>
+                  <form action="pay_amount1" method="post" onsubmit="return validate()">
+                        <div class="mt-1">
+                            <label class="form-label">Card Number</label>
+                            <input type="number" name="card_number" required placeholder="Enter Number" id="card_number" class="form-control">
+                      </div>
+                       <div class="mt-1">
+                            <label class="form-label">Holder Name</label>
+                            <input type="text" name="holder_name" required placeholder="Enter Name" id="holder_name" class="form-control">
+                      </div>
+                       <div class="mt-1">
+                            <label class="form-label">CVV</label>
+                            <input type="number" name="cvv" required placeholder="Enter Number" id="cvv" class="form-control">
+                      </div>
+                       <div class="mt-1">
+                            <label class="form-label">Expiry Date</label>
+                            <input type="text" name="expiry_date" required placeholder="Enter Date" id="expiry_date" class="form-control">
+                      </div>
+                       <div class="mt-2">
+                           <input type="submit" value="Pay" class="btn btn-success w-100" style="border-radius:50px;">
+                       </div>
+                  </form>
+             </div>
+         </div>
+     </div>
+ </div>

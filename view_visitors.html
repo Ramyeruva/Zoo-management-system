@@ -1,0 +1,34 @@
+{% if session["role"] == 'Admin':%}
+    {% include 'admin_head.html' %}
+{% elif session["role"] == 'Guardian':%}
+    {% include 'guardian_head.html' %}
+{% elif session["role"] == 'Doctor':%}
+    {% include 'doctor_head.html' %}
+{% elif session["role"] == 'Customer':%}
+    {% include 'customer_head.html' %}
+{% else:%}
+    {% include 'head.html' %}
+{% endif %}
+
+<div class="container">
+        <div class="row">
+            {% for visitor in visitors:%}
+            <div class="col-md-3">
+                <div class="card mt-5 p-3" style="border-radius: 50px 50px;">
+                     <div class="mt-1">
+                          <div class="text-muted">Visitor Type</div>
+                          <div class=""><b>{{visitor['visitor_type']}}</b></div>
+                     </div>
+                     <div class="mt-1">
+                          <div class="text-muted">{{visitor['visitor_type']}} Name</div>
+                          <div class=""><b>{{visitor['name']}}</b></div>
+                     </div>
+                     <div class="mt-1">
+                          <div class="text-muted">{{visitor['visitor_type']}} Age</div>
+                          <div class=""><b>{{visitor['age']}}</b></div>
+                     </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>

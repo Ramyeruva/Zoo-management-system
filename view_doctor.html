@@ -1,0 +1,37 @@
+{% if session["role"] == 'Admin':%}
+    {% include 'admin_head.html' %}
+{% elif session["role"] == 'Guardian':%}
+    {% include 'guardian_head.html' %}
+{% elif session["role"] == 'Doctor':%}
+    {% include 'doctor_head.html' %}
+{% elif session["role"] == 'Customer':%}
+    {% include 'customer_head.html' %}
+{% else:%}
+    {% include 'head.html' %}
+{% endif %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-3">
+            <div class="card mt-5 p-3" style="border-radius: 50px 50px;">
+                <div class="mt-1">
+                      <div class="text-muted">Doctor Name</div>
+                      <div class=""><b>{{doctor['name']}}</b></div>
+                 </div>
+                 <div class="mt-1">
+                      <div class="text-muted">Phone Number</div>
+                      <div class=""><b>{{doctor['phone']}}</b></div>
+                 </div>
+                 <div class="mt-1">
+                      <div class="text-muted">Email</div>
+                      <div class=""><b>{{doctor['email']}}</b></div>
+                 </div>
+                 <div class="mt-1">
+                      <div class="text-muted">Specialization</div>
+                      <div class=""><b>{{doctor['specialization']}}</b></div>
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>

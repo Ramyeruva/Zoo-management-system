@@ -1,0 +1,58 @@
+{% if session["role"] == 'Admin':%}
+    {% include 'admin_head.html' %}
+{% elif session["role"] == 'Guardian':%}
+    {% include 'guardian_head.html' %}
+{% elif session["role"] == 'Doctor':%}
+    {% include 'doctor_head.html' %}
+{% elif session["role"] == 'Customer':%}
+    {% include 'customer_head.html' %}
+{% else:%}
+    {% include 'head.html' %}
+{% endif %}
+
+<div class="container">
+        <div class="row">
+            {% for doctor_request in doctor_requests:%}
+            {% set animal = get_animal_id(doctor_request['animal_id'])%}
+            {% set doctor = get_doctor_id(doctor_request['doctor_id'])%}
+            <div class="col-md-4">
+                <div class="card mt-5 p-3" style="border-radius: 50px 50px;">
+                     <div class="text-center card-image">
+                            <img src="/static/pictures/{{animal['picture']}}" style="max-width:100%;height:100px;">
+                       </div>
+                     <div class="mt-1">
+                          <div class="text-center">Animal Name : <b>{{animal['animal_name']}}</b></div>
+                     </div>
+                    <div class="mt-1">
+                          <div class="text-muted">Doctor Name</div>
+                          <a href="view_doctor?doctor_id={{doctor['_id']}}"><b>{{doctor['name']}}</b></a>
+                     </div>
+                    <div class="mt-1">
+                        <div class="card p-3" style="border-radius: 50px 50px;">
+                            <div class="text-muted"><b>Cause</b></div>
+                             <div class="mt-1">{{doctor_request['cause']}}</div>
+                        </div>
+                     </div>
+                     <div class="mt-1">
+                          <div class="text-muted">Request Date</div>
+                          <div class=""><b>{{doctor_request['request_date'].strftime("%x")}}</b></div>
+                     </div>
+                     <div class="mt-1">
+                         <div class="text-muted">Status</div>
+                         <div class=""><b>{{doctor_request['status']}}</b></div>
+                    </div>
+                    <div class="row">
+                         {% if session["role"] == 'Doctor':%}
+                        <div class="col-md-6 mt-3">
+                            <a href="add_treatment?doctor_request_id={{doctor_request['_id']}}" class="btn btn-success w-100" style="border-radius:50px;">Add Treatment</a>
+                        </div>
+                        {% endif %}
+                        <div class="col-md-6 mt-3">
+                            <a href="view_treatments?doctor_request_id={{doctor_request['_id']}}&animal_id={{animal['_id']}}" class="btn btn-primary w-100" style="border-radius:50px;">View Treatments</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>

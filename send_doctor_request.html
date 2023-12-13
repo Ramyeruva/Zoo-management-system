@@ -1,0 +1,29 @@
+{% include "guardian_head.html"%}
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+         <div class="card mt-5 p-3" style="border-radius: 50px 50px;">
+                <form action="send_doctor_request1" method="post">
+                     <input type="hidden" name="animal_id" value="{{animal_id}}">
+                    <div class="text-center h4">Cause</div>
+                    <div class="mt-1">
+                          <label for="cause" class="form-label">Cause</label>
+                        <textarea name="cause" id="cause" placeholder="Enter Cause" required class="form-control"></textarea>
+                     </div>
+                    <div class="row">
+                        <div class="col-md-6 mt-4">
+                            <select name="doctor_id" id="doctor_id" required class="form-control">
+                                <option value="">Choose Doctor</option>
+                                {% for doctor in doctors:%}
+                                <option value="{{doctor['_id']}}">{{doctor['name']}}</option>
+                                 {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-6 mt-4">
+                            <input type="submit" value="Send" class="btn btn-primary w-100"  style="border-radius:50px;">
+                        </div>
+                    </div>
+                </form>
+         </div>
+    </div>
+</div>

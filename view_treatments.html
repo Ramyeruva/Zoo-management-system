@@ -1,0 +1,47 @@
+{% if session["role"] == 'Admin':%}
+    {% include 'admin_head.html' %}
+{% elif session["role"] == 'Guardian':%}
+    {% include 'guardian_head.html' %}
+{% elif session["role"] == 'Doctor':%}
+    {% include 'doctor_head.html' %}
+{% elif session["role"] == 'Customer':%}
+    {% include 'customer_head.html' %}
+{% else:%}
+    {% include 'head.html' %}
+{% endif %}
+
+<div class="container">
+        <div class="row">
+            {% for doctor_request in doctor_requests:%}
+            {% set animal = get_animal_id(doctor_request['animal_id'])%}
+            {% set doctor = get_doctor_id(doctor_request['doctor_id'])%}
+            <div class="col-md-4">
+                <div class="card mt-5 p-3" style="border-radius: 50px 50px;">
+                     <div class="text-center card-image">
+                            <img src="/static/pictures/{{animal['picture']}}" style="max-width:100%;height:100px;">
+                       </div>
+                     <div class="mt-1">
+                          <div class="text-center">Animal Name : <b>{{animal['animal_name']}}</b></div>
+                     </div>
+                    <div class="mt-1">
+                          <div class="text-muted">Doctor Name</div>
+                          <a href="view_doctor?doctor_id={{doctor['_id']}}"><b>{{doctor['name']}}</b></a>
+                     </div>
+                    <div class="mt-1">
+                        <div class="card p-3" style="border-radius: 50px 50px;">
+                            <div class="text-muted"><b>Treatment</b></div>
+                             <div class="mt-1">{{doctor_request['treatment']}}</div>
+                        </div>
+                     </div>
+                     <div class="mt-1">
+                          <div class="text-muted">Treatment Date</div>
+                         <div class=""><b>{{doctor_request['treatment_date'].date()}} {{doctor_request['treatment_date'].strftime("%I")}}:{{doctor_request['treatment_date'].strftime("%M")}} {{doctor_request['treatment_date'].strftime("%p")}}</b></div></div>
+                     <div class="mt-1">
+                         <div class="text-muted">Status</div>
+                         <div class=""><b>{{doctor_request['status']}}</b></div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>

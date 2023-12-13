@@ -1,0 +1,56 @@
+{% include 'head.html' %}
+
+<script>
+    function validate(){
+        let phone = document.getElementById("phone").value
+        console.log(phone)
+        if(phone.length!=10){
+            alert('PhoneNumber Length Must be Greater than 10')
+            return false
+        }
+        return true
+    }
+</script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="card mt-5 p-3" style="border-radius: 50px 50px;">
+                <form action="customer_registration1" method="post" onsubmit="return validate()">
+                    <div class="text-center h4">Customer Registration</div>
+                    <div class="row">
+                         <div class="col-md-6 mt-1">
+                              <label for="name" class="form-label">Customer Name</label>
+                              <input type="text" name="name" id="name" placeholder="Enter Name" required class="form-control">
+                         </div>
+                        <div class="col-md-6 mt-1">
+                              <label for="email" class="form-label">Email</label>
+                              <input type="email" name="email" id="email" placeholder="Enter Email" required class="form-control">
+                        </div>
+                        <div class="col-md-6 mt-1">
+                              <label for="phone" class="form-label">Phone Number</label>
+                              <input type="number" name="phone" id="phone" placeholder="Enter Number" required class="form-control">
+                        </div>
+                         <div class="col-md-6 mt-1">
+                              <label for="password" class="form-label">Password</label>
+                              <input type="password" name="password" id="password" placeholder="Enter Password" required class="form-control">
+                        </div>
+                         <div class="col-md-6 mt-1">
+                              <label for="age" class="form-label">Age</label>
+                              <input type="number" min="1" name="age" id="age" placeholder="Enter Age" required class="form-control">
+                        </div>
+                        <div class="col-md-3 mt-5">
+                            <label>Gender</label>
+                            <input type="radio" name="gender" id="male" required value="male"><label for="male">Male</label>
+                            <input type="radio" name="gender" id="female" required value="female"><label for="female">Female</label>
+                        </div>
+                        <div class="col-md-3 mt-4">
+                            <input type="submit" value="Register" class="btn btn-primary w-100"  style="border-radius:50px;margin-top:10px">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

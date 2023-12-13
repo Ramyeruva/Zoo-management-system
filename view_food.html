@@ -1,0 +1,38 @@
+{% if session["role"] == 'Admin':%}
+    {% include 'admin_head.html' %}
+{% elif session["role"] == 'Guardian':%}
+    {% include 'guardian_head.html' %}
+{% elif session["role"] == 'Doctor':%}
+    {% include 'doctor_head.html' %}
+{% elif session["role"] == 'Customer':%}
+    {% include 'customer_head.html' %}
+{% else:%}
+    {% include 'head.html' %}
+{% endif %}
+
+<div class="container">
+        <div class="row">
+            {% for animal_food in animal_foods:%}
+            {% set animal = get_animal_id(animal_food['animal_id'])%}
+            {% set food_time = formate_time(animal_food['food_time']) %}
+            <div class="col-md-3">
+                <div class="card mt-5 p-3" style="border-radius: 50px 50px;">
+                     <div class="text-center card-image">
+                            <img src="/static/pictures/{{animal['picture']}}" style="max-width:100%;height:100px;">
+                       </div>
+                     <div class="mt-1">
+                          <div class="text-center">Animal Name : <b>{{animal['animal_name']}}</b></div>
+                     </div>
+                    <div class="mt-1">
+                          <div class="text-muted">Food Name</div>
+                          <div class=""><b>{{animal_food['food_name']}}</b></div>
+                     </div>
+                    <div class="mt-1">
+                          <div class="text-muted">Food Time</div>
+                        <div class=""><b>{{food_time}}</b></div>
+                     </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
